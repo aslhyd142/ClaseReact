@@ -9,4 +9,6 @@ const mockUsuarios = [
     {id:1, nombre:'Juan Diaz', correo:'juan.diaz@inventario.com', rol:'admin', activo:true},
     {id:2, nombre:'Maria Guzman', correo:'maria.guzman@inventario.com', rol:'vendedor', activo:true},
     {id:3, nombre:'Carlos Garcia', correo:'carlos.garcia@inventario.com', rol:'bodeguero', activo:false}
-]
+];
+// Exportamos el arreglo para usarlo como valor inicial en useCrudSimulado
+export default mockUsuarios;

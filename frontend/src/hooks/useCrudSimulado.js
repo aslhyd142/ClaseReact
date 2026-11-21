@@ -4,6 +4,7 @@
 * Además, mantiene el estado de la memoria sincronizado con el almacenamiento local para que la información no se pierda.
 * si se recarga la página.
 */
+import { useState, useEffect } from 'react';
 function useCrudSimulado(claveStorage, datosIniciales) {
   // estado con la lista de registro el valor iniciales calcula
   // una sola vez, si hay datos guardados en localStorage los usa

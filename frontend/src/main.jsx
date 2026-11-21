@@ -1,37 +1,49 @@
-// Ayuda a detectar errores comunes en el desarrollo
+
+// ============================================================
+// main.jsx
+// Pertenece a: Clase 01 - Entorno y Bootstrap (imports de Bootstrap)
+//   Se amplia en Clase 03 (AuthProvider) y Clase 04 (BrowserRouter)
+// ------------------------------------------------------------
+// Es el PRIMER archivo que se ejecuta en el navegador. Aqui se
+// "monta" React dentro del <div id="root"></div> que existe en
+// index.html, y se configuran los proveedores globales que toda
+// la app va a necesitar: el enrutador (rutas) y el contexto de
+// autenticacion (saber quien inicio sesion).
+// ============================================================
+
+// StrictMode ayuda a detectar errores comunes en desarrollo (no afecta produccion)
 import { StrictMode } from 'react';
-
-// Función de React 18 o superior para montar la aplicación en el DOM
+// createRoot es la funcion moderna de React 18+ para montar la app en el DOM
 import { createRoot } from 'react-dom/client';
-
-// Habilita el manejo de rutas basado en la URL del navegador
+// BrowserRouter habilita el manejo de rutas basado en la URL del navegador
 import { BrowserRouter } from 'react-router-dom';
 
+// Estilos de Bootstrap (clases como "btn", "container", "table"...)
 import 'bootstrap/dist/css/bootstrap.min.css';
-// Estilos de Bootstrap: btn, container, table y demás
+// Iconos de Bootstrap (clases como "bi bi-trash")
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-// JavaScript de Bootstrap necesario para los modales
+// JavaScript de Bootstrap: necesario para que funcionen los modales,
+// dropdowns y el menu colapsable en pantallas pequeñas.
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-// Estilos propios del proyecto
+// Estilos propios del proyecto (se cargan despues de Bootstrap
+// para poder sobreescribir detalles puntuales si hace falta)
 import './index.css';
 
-// Componente raíz con todas las rutas de la aplicación
+// Componente raiz con todas las rutas de la app (ver App.jsx)
 import App from './App.jsx';
-
-// Proveedor con contexto de sesión
+// Proveedor del contexto de sesion (ver context/AuthContext.jsx)
 import { AuthProvider } from './context/authcontext.jsx';
 
-// Busca el div con id="root" de index.html y monta React ahí
+// Busca el <div id="root"> de index.html y "engancha" React ahi dentro
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* BrowserRouter habilita la navegación por URL */}
+    {/* BrowserRouter habilita la navegacion por URL (react-router-dom) */}
     <BrowserRouter>
-      {/* AuthProvider comparte con toda la aplicación quién es el usuario logueado */}
+      {/* AuthProvider comparte con toda la app quien es el usuario logueado */}
       <AuthProvider>
         <App />
       </AuthProvider>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

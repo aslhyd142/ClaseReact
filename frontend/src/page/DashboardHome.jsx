@@ -5,12 +5,13 @@
 
 //Hook para leer el usuario logueado(mostrar su nombre en el saludo)
 import{useAuth} from '../context/authcontext';
-/*//Hook generico crud simulado (solo usamos listas)
-//import useCrudSimulado from '/hooks/useCrudSimulado';
+//Hook generico crud simulado (solo usamos listas)
+import useCrudSimulado from '../hooks/useCrudSimulado';
 //datos iniciales de cada modulo
-//import mockUsuarios from '../data/mockUsuarios';
-//import mockSubCategorias from  '../data/mockSubCategorias';
-//import mockProductos from  '../data/mockProductos';*/
+import mockUsuarios from '../data/mockUsuarios';
+import mockCategorias from '../data/mockCategorias';
+import mockSubCategorias from '../data/mockSubcategorias';
+import mockProductos from  '../data/mockProductos';
 
 //tarjeta reutilizable para mostrar un numero grande con su etiqueta
 //recibe icono (clase de dashboard-icons) titulo total (numero) y color
@@ -39,10 +40,10 @@ function DashboardHome(){
      * de registros guardados o los datos iniciales
      * si todavia no se ha guardado nada de localStorage
     */
- /*//const { lista: usuarios } = useCrudSimulado('usuarios', mockUsuarios);
-   //const { lista: categorias } = useCrudSimulado('categorias',  mockCategorias);
-   //const { lista: subcategorias } = useCrudSimulado ('subcategorias', mockSubCategorias);
- //const { lista: productos } = useCrudSimulado('productos',mockProductos);*/
+ const { lista: usuarios } = useCrudSimulado('usuarios', mockUsuarios);
+   const { lista: categorias } = useCrudSimulado('categorias', mockCategorias);
+   const { lista: subcategorias } = useCrudSimulado ('subcategorias', mockSubCategorias);
+ const { lista: productos } = useCrudSimulado('productos',mockProductos);
         return (
                 <div>
                     <h2 className= 'h4 mb-1'> Hola, {usuario?.nombre}</h2>
